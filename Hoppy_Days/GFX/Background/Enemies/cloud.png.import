@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikeMan_walk1.png-8cfabea2e324939be0196d013962b5a0.stex"
+path="res://.import/cloud.png-a369b04a99ba997205366eb92a7418df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Enemies/spikeMan_walk1.png"
-dest_files=[ "res://.import/spikeMan_walk1.png-8cfabea2e324939be0196d013962b5a0.stex" ]
+source_file="res://GFX/Background/Enemies/cloud.png"
+dest_files=[ "res://.import/cloud.png-a369b04a99ba997205366eb92a7418df.stex" ]
 
 [params]
 

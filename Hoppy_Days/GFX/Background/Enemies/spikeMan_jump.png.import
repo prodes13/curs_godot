@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikeMan_stand.png-668f92a4789a4a71d64678ff7bfef4c5.stex"
+path="res://.import/spikeMan_jump.png-f26780d61d63539557b3c3f5ce403a2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Enemies/spikeMan_stand.png"
-dest_files=[ "res://.import/spikeMan_stand.png-668f92a4789a4a71d64678ff7bfef4c5.stex" ]
+source_file="res://GFX/Background/Enemies/spikeMan_jump.png"
+dest_files=[ "res://.import/spikeMan_jump.png-f26780d61d63539557b3c3f5ce403a2a.stex" ]
 
 [params]
 

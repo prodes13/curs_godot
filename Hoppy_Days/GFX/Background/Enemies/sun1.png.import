@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikeMan_jump.png-664d16389bae0450829e3d312e8c3dbe.stex"
+path="res://.import/sun1.png-cd566288e30fb2d828582f74aea739f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Enemies/spikeMan_jump.png"
-dest_files=[ "res://.import/spikeMan_jump.png-664d16389bae0450829e3d312e8c3dbe.stex" ]
+source_file="res://GFX/Background/Enemies/sun1.png"
+dest_files=[ "res://.import/sun1.png-cd566288e30fb2d828582f74aea739f8.stex" ]
 
 [params]
 
