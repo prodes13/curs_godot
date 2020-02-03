@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/GameState.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://NPCs/Spikeman.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPCs/Cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Portal.tscn" type="PackedScene" id=11]
 
 [node name="Level1" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -1600.67, 198.969 )
+position = Vector2( -1521.47, 226.923 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -146,3 +149,17 @@ stream = ExtResource( 7 )
 autoplay = true
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="Portal" parent="." instance=ExtResource( 11 )]
+position = Vector2( -2180.41, 451.922 )
+
+[node name="NPCs" type="Node" parent="."]
+
+[node name="Spikeman" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 1779.74, 1518.83 )
+
+[node name="Spikeman2" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 4099.92, 1257.93 )
+
+[node name="Cloud" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( -526.467, -298.176 )
