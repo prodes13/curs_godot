@@ -42,11 +42,3 @@ func Player_in_LOS():
 		return false
 
 
-
-
-
-
-
-
-
-
