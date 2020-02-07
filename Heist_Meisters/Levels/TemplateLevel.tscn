@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Tiles/Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Interface/VisionMode.tscn" type="PackedScene" id=3]
 
 [node name="TemplateLevel" type="Node2D"]
 
@@ -22,9 +23,7 @@ position = Vector2( -480, -96 )
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2( -2.21606, 0 )
-color = Color( 0.239216, 0.231373, 0.231373, 1 )
+[node name="VisionMode" parent="." instance=ExtResource( 3 )]
 
 [node name="Cameras" type="Node" parent="."]
 
