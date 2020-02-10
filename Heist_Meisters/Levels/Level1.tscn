@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPCs/Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Guard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GFX/Tilesheet/tilesheet_complete.png" type="Texture" id=4]
 [ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Doors/LockedDoor.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 390.256, 192.628, 391.03, 57.9903, 500.01, -186.191, 509.661, 292.936, 449.896, 247.07, 339.187, -75.8737, 327.58, 6.92081, -175.307, -178.027, 249.428, -61.9457, 134.909, -66.5884, 134.135, 56.4428, 253.297, 7.69458, -48.4773, -72.0048, -168.309, -120.875, -129.724, -63.4932, -196.794, -66.0955, -260.45, -122.042, -290.775, -69.5559, -503.051, -10.0721, -496.053, -183.858, -267.448, -182.692, -191.511, -51.0013, -128.177, 1.50433, -72.6678, 127.557, -190.002, 37.2994, 5.47766, 115.894, -372.42, 392.319, -381.751, 321.172, -318.768, 322.338, -263.949, 330.502, -262.783, 69.2398, -318.768, 251.19, -499.552, 65.7407, -447.066, 247.691, -499.552, 442.472, -450.565, 391.153, 500.01, 435.474, 61.3996, -0.0432281, 61.3996, 126.857, 317.521, 132.273, 316.747, 194.176, 5.47766, 190.54, -179.972, 243.026, -54.0062, 204.536, 453.603, 322.124, 509.198, 404.589 )
@@ -142,13 +143,16 @@ rotation = 1.56871
 position = Vector2( -31.9262, 223.394 )
 rotation = 1.56871
 
-[node name="Door4" parent="Doors" index="3" instance=ExtResource( 5 )]
-position = Vector2( -224.932, -96.0193 )
-rotation = 1.56871
-
-[node name="Door6" parent="Doors" index="4" instance=ExtResource( 5 )]
+[node name="Door6" parent="Doors" index="3" instance=ExtResource( 5 )]
 position = Vector2( 31.0677, 353.551 )
 rotation = 1.56871
 
-[node name="Door5" parent="Doors" index="5" instance=ExtResource( 5 )]
+[node name="Door5" parent="Doors" index="4" instance=ExtResource( 5 )]
 position = Vector2( 480.433, 288.98 )
+
+[node name="LockedDoor" parent="LockedDoors" index="0" instance=ExtResource( 6 )]
+position = Vector2( -287.545, 287.496 )
+
+[node name="LockedDoor2" parent="LockedDoors" index="1" instance=ExtResource( 6 )]
+position = Vector2( -224.871, -95.9487 )
+rotation = 1.58064
