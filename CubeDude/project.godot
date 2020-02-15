@@ -16,7 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="CubeDude"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[layer_names]
+
+3d_physics/layer_1="Pitch"
+3d_physics/layer_2="Ball"
+3d_physics/layer_3="Players"
 
 [rendering]
 
