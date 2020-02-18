@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/body-1.png" type="Texture" id=1]
+[ext_resource path="res://assets/body-2.png" type="Texture" id=2]
+[ext_resource path="res://assets/turela.png" type="Texture" id=3]
+[ext_resource path="res://Tank.gd" type="Script" id=4]
+[ext_resource path="res://Bullet.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Running",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 182.063, 187.253 )
+
+[node name="Tank" type="KinematicBody2D"]
+position = Vector2( 141.682, 61.6011 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 4 )
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Tracks" type="AnimatedSprite" parent="Body"]
+position = Vector2( -1.24121, -5.84198 )
+rotation = 1.5708
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="Turret" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Turret"]
+position = Vector2( 4.07913, 2.49487 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+offset = Vector2( -1.9993, -72.5423 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 165.74, 158.929 )
+shape = SubResource( 2 )

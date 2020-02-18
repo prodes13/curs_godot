@@ -7,9 +7,14 @@ export var speed = 10
 const UP = Vector3(0, 1, 0)
 const GRAVITY = -5
 
+
 func _physics_process(delta):
 	move()
 	fall()
+
+func _process(delta):
+	animate()
+	face_forward()
 
 func move():
 	if Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
@@ -33,3 +38,16 @@ func fall():
 		motion.y = 0
 	else: 
 		motion.y = GRAVITY
+
+func animate():
+	if motion.z or motion.x:
+		$AnimationPlayer.play("Arms Cross Walk")
+	else:
+		$AnimationPlayer.stop()
+
+func face_forward():
+	if not motion.x == 0 or not motion.z == 0:
+		look_at(Vector3(-motion.x, 0, -motion.z), UP)
+	
+	
+	
