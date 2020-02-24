@@ -38,5 +38,3 @@ func _on_Enemy_body_entered(body):
 	if body.name == "Steve":
 		get_tree().change_scene("res://GameOver.tscn")
 
-# last video 
-#https://www.youtube.com/watch?v=rS-PcTTiGtA
