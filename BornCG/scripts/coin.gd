@@ -11,6 +11,7 @@ func _physics_process(delta):
 
 func _on_Coin_body_entered(body):
 	if body.name == "Steve":
+		$AnimationPlayer.play("Bounce")
 		$Timer.start()
 
 
