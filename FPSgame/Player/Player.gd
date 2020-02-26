@@ -24,7 +24,7 @@ func _input(event):
 			camera.rotate_x(deg2rad(-x_delta))
 			camera_x_rotation += x_delta
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -50,6 +50,4 @@ func _physics_process(delta):
 		velocity.y += jump_power
 		
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
-#	https://www.youtube.com/watch?v=UV-bhtb3734&list=PLs1xoSUcO4GbKg2w3GcTPWqSt8Cq_j1p4&index=3&t=9s
-	
+
