@@ -18,24 +18,17 @@ func _ready():
 	current_ammo = clip_size
 
 func _process(_delta):
-	ammo_label.set_text("Ammo\n %d / %d" % [current_ammo, clip_size])
+	if reloading:
+		ammo_label.set_text("Reloading...")
+	else:
+		ammo_label.set_text("Ammo\n %d / %d" % [current_ammo, clip_size])
 	if Input.is_action_just_pressed("primary_fire") and can_fire:
 		if current_ammo > 0 and not reloading:
-			print("Fired weapon!")
-			can_fire = false
-			current_ammo -= 1
-			check_collision()
-			#time in seconds -> fire_rate
-			#timeout -> the applied method
-			yield(get_tree().create_timer(fire_rate), "timeout")
-			
-			can_fire = true
+			fire()
 		elif not reloading:
-			print("Reload!")
-			reloading = true
-			yield(get_tree().create_timer(reload_rate), "timeout")
-			current_ammo = clip_size
-			reloading = false
+			reload()
+	if Input.is_action_just_pressed("reload") and not reloading:
+		reload()
 
 func check_collision():
 	if raycast.is_colliding():
@@ -45,5 +38,23 @@ func check_collision():
 			collider.queue_free()
 			print("Killed " + collider.name)
 
-# https://www.youtube.com/watch?v=Y_2oiLjOx54
-# min 25
+func fire():
+	print("Fired weapon!")
+	can_fire = false
+	current_ammo -= 1
+	check_collision()
+	#time in seconds -> fire_rate
+	#timeout -> the applied method
+	yield(get_tree().create_timer(fire_rate), "timeout")
+		
+	can_fire = true
+
+func reload():
+	print("Reload!")
+	reloading = true
+	yield(get_tree().create_timer(reload_rate), "timeout")
+	current_ammo = clip_size
+	reloading = false
+
+
+#   https://www.youtube.com/watch?v=5YT4bFw9k4U
