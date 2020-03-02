@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Interactable/Interactable.gd" type="Script" id=2]
+[ext_resource path="res://Interactable/InteractableLightSwitch.gd" type="Script" id=2]
 [ext_resource path="res://Models/Tower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 2, 1, 2 )
@@ -50,6 +51,8 @@ material/0 = SubResource( 3 )
 [node name="StaticBody" type="StaticBody" parent="Switch"]
 collision_layer = 2
 script = ExtResource( 2 )
+light = NodePath("../../Light")
+on_by_default = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Switch/StaticBody"]
 shape = SubResource( 2 )
@@ -133,3 +136,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1257, -3, 11.8699 )
 
 [node name="Tower2" parent="Models" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9163, -3, -9.33884 )
+
+[node name="Light" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.132914, 0.991128, 0, -0.991128, 0.132914, 0.0245004, 3.26281, -8.7155 )
+light_energy = 10.0
+spot_range = 7.79082
+spot_angle = 56.6068
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
