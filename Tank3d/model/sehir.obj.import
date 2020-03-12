@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/sehir.obj-3d462b9244f538d9b1ea85db33f60edf.mesh"
+
+[deps]
+
+files=[ "res://.import/sehir.obj-3d462b9244f538d9b1ea85db33f60edf.mesh" ]
+
+source_file="res://model/sehir.obj"
+dest_files=[ "res://.import/sehir.obj-3d462b9244f538d9b1ea85db33f60edf.mesh", "res://.import/sehir.obj-3d462b9244f538d9b1ea85db33f60edf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
