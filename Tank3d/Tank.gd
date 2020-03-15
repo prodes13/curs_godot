@@ -1,62 +1,58 @@
 extends KinematicBody
 
-var velocity = Vector3(0, 0, 0)
-const SPEED = 12
-const ANGULAR_SPEED = deg2rad(9)
+export var speed = 10
+export var acceleration = 5
+export var gravity = 0.98
+export var jump_power = 30
+export var mouse_sensivity = 0.3
 
-onready var point = global_position
-onready var obj = get_node("../../Player")
-#node.get_global_transform().get_translation()
+var STEER_ANGLE = 0.02
+
+onready var head = $Turret
+onready var camera = $Camera
+onready var body = $Body
+
+var velocity = Vector3()
+var camera_x_rotation = 0
 
 func _ready():
-	print(obj.name)
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		head.rotate_y(deg2rad(-event.relative.x * mouse_sensivity))
+		
+		var x_delta = event.relative.y * mouse_sensivity
+#		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
+#			camera.rotate_x(deg2rad(-x_delta))
+#			camera_x_rotation += x_delta
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
-	if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
-		velocity.x = 0
-	elif Input.is_action_pressed("right"):
-		velocity.x = SPEED
-#		rotate_z(-ANGULAR_SPEED)
-	elif Input.is_action_pressed("left"):
-		velocity.x = -SPEED
-#		rotate_z(ANGULAR_SPEED)
-	else:
-		velocity.x = lerp(velocity.x, 0, 0.1)
-	#math approach form to float
-	if Input.is_action_pressed("up") and Input.is_action_pressed("down"):
-		velocity.z = 0
-	elif Input.is_action_pressed("up"):
-		velocity.z = -SPEED
-#		rotate_x(-ANGULAR_SPEED)
+	var body_basis = body.get_global_transform().basis
+	
+	var direction = Vector3()
+	if Input.is_action_pressed("up"):
+		direction -= body_basis.z
 	elif Input.is_action_pressed("down"):
-		velocity.z = SPEED
-#		rotate_x(ANGULAR_SPEED)
-	else:
-		velocity.z = lerp(velocity.z, 0, 0.1)
+		direction += body_basis.z
+	if Input.is_action_pressed("left"):
+#		direction -= body_basis.x
+		body.rotate_y(STEER_ANGLE)
+	elif Input.is_action_pressed("right"):
+#		direction += body_basis.x
+		body.rotate_y(-STEER_ANGLE)
+	direction = direction.normalized()
+	
+#	create fps walking
+	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+	velocity.y -= gravity
+	
+#	if Input.is_action_just_pressed("jump") and is_on_floor():
+#		velocity.y += jump_power
 		
-	move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector3.UP)
 
-func rotateAround(obj, point, axis, angle):
-	var rot = angle + obj.rotation.y 
-	var tStart = point
-	obj.global_translate (-tStart)
-	obj.transform = obj.transform.rotated(axis, -rot)
-	obj.global_translate (tStart)
-
-
-#Well for anyone else trying to do this here is what I came up with.
-#
-#obj is the Spatial object you want to rotate.
-#point is a vector3, the point in world space you want to rotate around.
-#axis is the axis you want to rotate around, ie y axis would be Vector3(0, 1, 0)
-#angle is the angle (in radians) you want to set the objects rotation to, not the amount to rotate it by.
-#
-#func rotateAround(obj, point, axis, angle):
-#    var rot = angle + obj.rotation.y 
-#    var tStart = point
-#    obj.global_translate (-tStart)
-#    obj.transform = obj.transform.rotated(axis, -rot)
-#    obj.global_translate (tStart)
-#
-#Note that if you want to rotate around a different axis other than Y you will also have to change obj.rotation.y to a different axis, this could be modified to support any axis but this is all I need for now.

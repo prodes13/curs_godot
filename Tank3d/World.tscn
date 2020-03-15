@@ -599,11 +599,6 @@ material/0 = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 shape = SubResource( 3 )
 
-[node name="Player" type="Spatial" parent="."]
-
-[node name="Tank" parent="Player" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52218, 0 )
+[node name="Tank" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10975, 0 )
 script = ExtResource( 2 )
-
-[node name="Camera" type="Camera" parent="Player/Tank"]
-transform = Transform( 1, 0, 0, 0, 0.559005, 0.829164, 0, -0.829164, 0.559005, 0, 6.5968, 3.99869 )
